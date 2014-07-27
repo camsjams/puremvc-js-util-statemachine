@@ -4,8 +4,9 @@
         "console": true,
         "window": true,
         "location": true,
+        "puremvc": true,
+        "utilities": true,
         "escape": true,
-        "moment": true,
         "setTimeout": true,
         "equal": true,
         "ok": true
