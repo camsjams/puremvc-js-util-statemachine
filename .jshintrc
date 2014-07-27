@@ -1,0 +1,32 @@
+{
+    "predef": {
+        "document": true,
+        "console": true,
+        "window": true,
+        "location": true,
+        "escape": true,
+        "moment": true,
+        "setTimeout": true,
+        "equal": true,
+        "ok": true
+    },
+    "node": false,
+    "browser": true,
+    "camelcase": true,
+    "bitwise": true,
+    "curly": true,
+    "jquery": true,
+    "eqeqeq": true,
+    "forin": true,
+    "es3": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": false,
+    "noarg": true,
+    "noempty": true,
+    "undef": true,
+    "unused": true,
+    "trailing": true,
+    "indent": 4,
+    "esnext": true
+}
