@@ -1,6 +1,6 @@
 ## PureMVC JavaScript Utility: State Machine
 
-Much like the official [PureMVC](http://puremvc.github.com/) [ActionScript 3](https://github.com/PureMVC/puremvc-as3-standard-framework/wiki) [Utility: State Machine](https://github.com/PureMVC/puremvc-as3-util-statemachine/wiki), this utility provides a simple yet effective Finite State Machine implementation, which allows the definition of discrete states, and the valid transitions to other states available from any given state, and the actions which trigger the transitions. A mechanism is provided for defining the entire state machine in XML and having a fully populated StateMachine injected into the PureMVC app.
+Much like the official [PureMVC](http://puremvc.github.com/) [ActionScript 3](https://github.com/PureMVC/puremvc-as3-standard-framework/wiki) [Utility: State Machine](https://github.com/PureMVC/puremvc-as3-util-statemachine/wiki), this utility provides a simple yet effective Finite State Machine implementation, which allows the definition of discrete states, and the valid transitions to other states available from any given state, and the actions which trigger the transitions. A mechanism is provided for defining the entire state machine in XML-friendly JSON and having a fully populated StateMachine injected into the PureMVC app.
 
 * Discussion - coming soon
 * [State Machine Overview Presentation](http://puremvc.tv/#P003/)
