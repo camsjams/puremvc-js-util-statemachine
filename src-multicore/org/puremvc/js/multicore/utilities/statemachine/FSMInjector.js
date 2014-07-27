@@ -15,7 +15,6 @@ puremvc.define({
 	name: 'utilities.statemachine.FSMInjector',
 	parent: puremvc.Notifier,
 	constructor: function (fsm) {
-		console.log('FSMInjector constructor() fsm:', fsm);
 		this.fsm = fsm;
 	}
 },
@@ -45,16 +44,13 @@ puremvc.define({
 	 * <code>IFacade</code>.
 	 */
 	inject: function () {
-		console.warn('FSMInjector inject()');
 		var stateMachine = new utilities.statemachine.StateMachine(),
-			state;
-		console.warn('FSMInjector inject() stateMachine', stateMachine);
+			states = this.states();
 
-		console.log('FSMInjector inject() this.states', this.states());
+		//console.log('FSMInjector inject() fsm:%o and states:%o', this.fsm, states);
 		// Register all the states with the StateMachine
-		for (state in this.states()) {
-			console.log('FSMInjector inject() state', state);
-			stateMachine.registerState(state, this.isInitial(state.name));
+		for (var i = 0; i < states.length; i++) {
+			stateMachine.registerState(states[i], this.isInitial(states[i].name));
 		}
 		// Register the StateMachine with the facade
 		this.facade.registerMediator(stateMachine);
@@ -74,18 +70,14 @@ puremvc.define({
 	 * @private
 	 */
 	states: function () {
-		console.log('states()');
-		var stateDefs = this.fsm.state,
-			state;
+		var stateDefs = this.fsm.state;
 
 		if (this.stateList === null) {
 			this.stateList = [];
 			for (var i = 0; i < stateDefs.length; i++) {
-				this.stateList.push(
-				this.createState(stateDefs[i]));
+				this.stateList.push(this.createState(stateDefs[i]));
 			}
 		}
-		console.log('states() has stateList', this.stateList);
 		return this.stateList;
 	},
 
@@ -102,17 +94,16 @@ puremvc.define({
 		// Create State object
 		var state = new utilities.statemachine.State(stateDef['@name'], stateDef['@entering'], stateDef['@exiting'], stateDef['@changed']),
 			transitions = stateDef.transition;
-
-		console.warn('createState() state', state);
-		console.warn('createState() transitions', transitions);
-		/*
-		// set transitions
-		for (var i = 0, len = transitions.length(); i < len; i++) {
-			var transDef = transitions[i];
-			state.defineTrans(String(transDef.@action), String(transDef.@target));
-		}*/
-		console.warn('finish: createState', stateDef);
-		//return state;
+		if(transitions) {
+			// set transitions
+			for (var i = 0; i < transitions.length; i++) {
+				state.defineTrans(
+					transitions[i]['@action'],
+					transitions[i]['@target']
+				);
+			}
+		}
+		return state;
 	},
 
 	/**
@@ -126,9 +117,6 @@ puremvc.define({
 	 *
 	 */
 	isInitial: function (stateName) {
-		var initial = true;
-		//var initial /*String*/ = XML(fsm.@initial).toString();
-		console.warn('isInitial', initial, stateName);
-		return stateName === initial;
+		return stateName === this.fsm['@initial'];
 	}
 });

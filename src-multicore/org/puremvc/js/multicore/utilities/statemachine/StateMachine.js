@@ -13,10 +13,7 @@
  */
 puremvc.define({
 	name: 'utilities.statemachine.StateMachine',
-	parent: puremvc.Mediator,
-	constructor: function () {
-		console.log('StateMachine constructor()');
-	}
+	parent: puremvc.Mediator
 },
 // INSTANCE MEMBERS
 {
@@ -102,12 +99,11 @@ puremvc.define({
 	 * 		Boolean telling if this is the initial state of the system.
 	 */
 	registerState: function (state, initial) {
-		console.log('StateMachine registerState() stateName:', stateName);
 		if (state == null || this.states[state.name] != null) {
 			return;
 		}
 		this.states[state.name] = state;
-		if (initial) {
+		if (this.initial) {
 			this.initial = state;
 		}
 	},
@@ -123,7 +119,6 @@ puremvc.define({
 	 * 		Name of the state mapping to remove.
 	 */
 	removeState: function (stateName) {
-		console.log('StateMachine removeState() stateName:', stateName);
 		var state = this.states[stateName];
 		if (state == null) {
 			return;
@@ -158,7 +153,7 @@ puremvc.define({
 	 * 		notification body.
 	 */
 	transitionTo: function (nextState, data) {
-		console.log('StateMachine transitionTo()', nextState, data);
+		console.warn('StateMachine transitionTo()', nextState, data);
 		// Going nowhere?
 		if (nextState == null) {
 			return;
