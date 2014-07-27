@@ -68,10 +68,9 @@ puremvc.define({
 	 *		 The name of the target state to transition to.
 	 */
 	defineTrans: function (action, target) {
-		if (this.getTarget(action) != null){
+		if (this.getTarget(action)){
 			return;
 		}
-
 		this.transitions[action] = target;
 	},
 
