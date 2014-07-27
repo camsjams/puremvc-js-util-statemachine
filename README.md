@@ -9,7 +9,10 @@ Much like the official [PureMVC](http://puremvc.github.com/) [ActionScript 3](ht
 * [MultiCore Version](http://darkstar.puremvc.org/content_header.html?url=http://puremvc.org/pages/docs/AS3/Utility_AS3_StateMachine/asdoc-multicore/&desc=PureMVC%20MultiCore%20Docs%20AS3%20Utility:%20State%20Machine)
 
 ## Status
-Beta - Version 0.0.1
+Beta - Version 0.9.1
+
+## Demos Using This Utility
+* [Locks](https://github.com/camsjams/puremvc-js-util-statemachine-demo-locks/wiki)
 
 ## Platforms / Technologies
 * [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
