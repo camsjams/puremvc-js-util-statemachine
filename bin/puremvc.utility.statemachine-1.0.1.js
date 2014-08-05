@@ -94,7 +94,6 @@ puremvc.define({
 		return this.transitions[action];
 	}
 });
-
 /**
  * @author Cameron Manavian
  *
@@ -380,7 +379,10 @@ puremvc.define({
 	inject: function () {
 		var stateMachine = new utilities.statemachine.StateMachine(),
 			states = this.states();
-
+		// TODO investigate this bug
+		// reset objects that bleed
+		stateMachine.states = {};
+		stateMachine.initial = null;
 		//console.log('FSMInjector inject() fsm:%o and states:%o', this.fsm, states);
 		// Register all the states with the StateMachine
 		for (var i = 0; i < states.length; i++) {
