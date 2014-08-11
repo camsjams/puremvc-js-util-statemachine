@@ -16,6 +16,7 @@ puremvc.define({
 	parent: puremvc.Notifier,
 	constructor: function (name, entering, exiting, changed) {
 		this.name = name;
+		this.onInit();
 		if (entering) this.entering = entering;
 		if (exiting) this.exiting = exiting;
 		if (changed) this.changed = changed;
@@ -92,8 +93,20 @@ puremvc.define({
 	 */
 	getTarget: function (action) {
 		return this.transitions[action];
+	},
+	
+	/**
+	 * init instance vars
+	 *
+	 */
+	onInit: function() {
+		this.entering = null;
+		this.exiting = null;
+		this.changed = null;
+		this.transitions = {};
 	}
 });
+
 /**
  * @author Cameron Manavian
  *
